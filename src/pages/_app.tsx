@@ -47,14 +47,6 @@ const { chains, provider } = configureChains(
   [mainnet, polygon, optimism, arbitrum, goerli],
   [
     infuraProvider({ apiKey: process.env.NEXT_PUBLIC_INFURA_ID !== '' && process.env.NEXT_PUBLIC_INFURA_ID }),
-    jsonRpcProvider({
-      rpc: chain => {
-        if (chain.id !== gnosisChain.id) return null
-        return {
-          http: `${chain.rpcUrls.default}`,
-        }
-      },
-    }),
     publicProvider(),
   ]
 )
